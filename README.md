@@ -11,7 +11,7 @@ Build Tika
 `cd my_tika`
 
 `mvn clean install`
-or maybe `mvn clean install -pl tika-parsers-classic-package -am` (to build only the classic parser package module)
+or maybe `mvn clean install -pl :tika-parsers-classic-package -am` (to build only the classic parser package module)
 
 Use Tika
 -----
