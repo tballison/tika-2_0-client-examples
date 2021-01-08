@@ -78,6 +78,14 @@ public class TestRotation extends TikaTest {
         debug(metadataList);
     }
 
+    @Test
+    public void testDocx() throws Exception {
+        //not a real test, yet
+        Parser p = new AutoDetectParser(getTestConfig("tika-config-preprocess-ocr-auto.xml"));
+        String xml = getXML("SkewedDickens.docx", p).xml;
+        System.out.println(xml);
+    }
+
     private TikaConfig getTestConfig(String name) throws Exception {
         try (InputStream is =
                 TestRotation.class.getResourceAsStream("/"+name)) {
