@@ -23,6 +23,7 @@ import org.apache.tika.parser.ParseContext;
 import org.apache.tika.parser.Parser;
 import org.apache.tika.parser.ocr.TesseractOCRConfig;
 import org.apache.tika.sax.ToXMLContentHandler;
+import org.junit.Assert;
 import org.junit.Test;
 import org.xml.sax.ContentHandler;
 
@@ -49,7 +50,7 @@ public class TestRotation extends TikaTest {
             ContentHandler contentHandler = new ToXMLContentHandler();
             p.parse(is, contentHandler, m, pc);
             String content = contentHandler.toString();
-            assertTrue(content.contains("non-text-searchable PDF"));
+            Assert.assertTrue(content.contains("non-text-searchable PDF"));
         }
     }
 
@@ -65,7 +66,7 @@ public class TestRotation extends TikaTest {
         try (InputStream is = TestRotation.class.getResourceAsStream(path)) {
             p.parse(is, contentHandler, m, pc);
             String content = contentHandler.toString();
-            assertTrue(content.contains("Pellentesque"));
+            Assert.assertTrue(content.contains("Pellentesque"));
         }
     }
 
@@ -73,7 +74,7 @@ public class TestRotation extends TikaTest {
     public void testInlineRPW() throws Exception {
         Parser p = new AutoDetectParser(getTestConfig("tika-config-preprocess-ocr-auto.xml"));
         List<Metadata> metadataList = getRecursiveMetadata("testOCR.pdf", p);
-        assertEquals(1, metadataList.size());
+        Assert.assertEquals(1, metadataList.size());
 
         debug(metadataList);
     }
